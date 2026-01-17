@@ -27,9 +27,15 @@ body {
     color: var(--text-main);
     font-family: var(--font-family);
     min-height: 100vh;
+    height: auto;
+    /* Allow growth */
     display: flex;
     justify-content: center;
-    align-items: center;
+    align-items: flex-start;
+    /* Changed from center to allow scrolling on small screens */
+    padding-top: 4rem;
+    /* Add some top space */
+    padding-bottom: 4rem;
     overflow-x: hidden;
 }
 

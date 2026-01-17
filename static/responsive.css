@@ -1,0 +1,99 @@
+/* Responsive Design Adapter */
+
+@media (max-width: 768px) {
+
+    /* Container adjustments */
+    body {
+        align-items: flex-start;
+        /* Allow scrolling from top */
+        padding-top: 2rem;
+    }
+
+    .app-container {
+        padding: 1rem;
+        gap: 1.5rem;
+    }
+
+    /* Header scaling */
+    .logo {
+        font-size: 2.5rem;
+    }
+
+    .subtitle {
+        font-size: 0.95rem;
+    }
+
+    /* Adjust glass panels padding */
+    .glass-panel {
+        padding: 1.25rem;
+    }
+
+    /* Stats bar wrapping */
+    .stats-bar {
+        flex-wrap: wrap;
+        gap: 1rem;
+        justify-content: center;
+        /* Center items when wrapped */
+    }
+
+    /* Stack Search Bar components if needed, though icon is small */
+    /* If we had text button, we'd wrap. Icon button is generally fine. */
+}
+
+@media (max-width: 480px) {
+
+    /* Mobile specific */
+    .logo {
+        font-size: 2rem;
+    }
+
+    .card-header h2 {
+        font-size: 1.25rem;
+    }
+
+    .step-indicator {
+        font-size: 0.7rem;
+        padding: 0.2rem 0.5rem;
+    }
+
+    /* Make buttons full width on very small screens for better touch targets */
+    .actions .btn {
+        width: 100%;
+        margin-top: 0.5rem;
+    }
+
+    .status-msg {
+        display: block;
+        margin-left: 0;
+        margin-top: 0.5rem;
+        text-align: center;
+    }
+
+    /* File upload wrapper stacking (overrides upload.css via cascade if loaded after, or we add !important / specific selector) */
+    .file-upload-wrapper {
+        flex-direction: column;
+        align-items: stretch !important;
+        /* Stretch to fill width */
+    }
+
+    .file-upload-wrapper .file-label {
+        width: 100%;
+        margin-bottom: 0.5rem;
+        /* add spacing since gap applies to flex, but we want visual separation */
+    }
+
+    .file-upload-wrapper .secondary-btn {
+        width: 100%;
+        margin-left: 0;
+    }
+
+    .stats-bar {
+        font-size: 0.75rem;
+        padding: 0.5rem;
+    }
+
+    /* Citations grid - 1 column on mobile */
+    .citations-list {
+        grid-template-columns: 1fr;
+    }
+}
