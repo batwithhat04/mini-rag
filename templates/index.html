@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MiniRAG - Intelligent Knowledge Base</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='upload.css') }}">
+    <!-- Marked for Markdown rendering -->
+    <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+</head>
+
+<body>
+    <div class="app-container">
+        <header>
+            <div class="logo">Mini<span>RAG</span></div>
+            <p class="subtitle">Pinecone Vector DB • Gemini LLM • Cohere Rerank</p>
+        </header>
+
+        <main>
+            <!-- Ingestion -->
+            <section class="card glass-panel" id="ingest-section">
+                <div class="card-header">
+                    <h2>1. Knowledge Base</h2>
+                    <span class="step-indicator">Upload</span>
+                </div>
+                <div class="input-group">
+                    <textarea id="knowledge-input" placeholder="Paste your context text here..."></textarea>
+
+                    <div class="divider-text">OR UPLOAD PDF</div>
+
+                    <div class="file-upload-wrapper">
+                        <input type="file" id="pdf-input" accept=".pdf" class="hidden-input">
+                        <label for="pdf-input" class="file-label">
+                            <span id="file-name">Choose a PDF file...</span>
+                        </label>
+                        <button id="upload-btn" class="btn secondary-btn" disabled>
+                            Upload PDF
+                        </button>
+                    </div>
+                </div>
+                <div class="actions">
+                    <button id="ingest-btn" class="btn primary-btn">
+                        <span class="btn-text">Index Text</span>
+                        <div class="btn-shine"></div>
+                    </button>
+                    <span id="ingest-status" class="status-msg"></span>
+                </div>
+            </section>
+
+            <!-- Query -->
+            <section class="card glass-panel" id="query-section">
+                <div class="card-header">
+                    <h2>2. Semantic Search</h2>
+                    <span class="step-indicator">Query</span>
+                </div>
+                <!-- Search Box -->
+                <div class="input-group search-bar">
+                    <input type="text" id="query-input" placeholder="Ask a specific question about the context...">
+                    <button id="query-btn" class="btn icon-btn">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" stroke="currentColor"
+                            stroke-width="2">
+                            <circle cx="11" cy="11" r="8" />
+                            <path d="m21 21-4.35-4.35" />
+                        </svg>
+                    </button>
+                </div>
+
+                <!-- Stats / Timing -->
+                <div class="stats-bar hidden" id="stats-bar">
+                    <div class="stat-item">
+                        <span class="stat-label">Total Time:</span>
+                        <span class="stat-value" id="time-total">--s</span>
+                    </div>
+                    <div class="stat-item">
+                        <span class="stat-label">Retrieval:</span>
+                        <span class="stat-value" id="time-retrieval">--s</span>
+                    </div>
+                    <div class="stat-item">
+                        <span class="stat-label">Rerank:</span>
+                        <span class="stat-value" id="time-rerank">--s</span>
+                    </div>
+                    <div class="stat-item">
+                        <span class="stat-label">Gen:</span>
+                        <span class="stat-value" id="time-gen">--s</span>
+                    </div>
+                </div>
+
+                <!-- Answer Area -->
+                <div class="response-area hidden" id="response-container">
+                    <div class="response-header">
+                        <h3>AI Answer</h3>
+                    </div>
+                    <div class="response-content" id="response-text">
+                        <!-- Markdown content will go here -->
+                    </div>
+
+                    <!-- Citations Section -->
+                    <div class="citations-container hidden" id="citations-container">
+                        <h4>Sources & Context</h4>
+                        <div class="citations-list" id="citations-list">
+                            <!-- Citation items injected here -->
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </main>
+
+        <footer>
+            <p>Built for AI Engineer Assessment • Track B</p>
+        </footer>
+    </div>
+
+    <script src="{{ url_for('static', filename='script.js') }}"></script>
+</body>
+
+</html>

@@ -1,0 +1,75 @@
+/* Existing Styles... */
+
+/* New Upload Styles */
+.divider-text {
+    text-align: center;
+    color: var(--text-muted);
+    font-size: 0.8rem;
+    margin: 1rem 0;
+    font-weight: 500;
+    letter-spacing: 1px;
+    position: relative;
+}
+
+.divider-text::before,
+.divider-text::after {
+    content: "";
+    position: absolute;
+    top: 50%;
+    width: 40%;
+    height: 1px;
+    background: var(--glass-border);
+}
+
+.divider-text::before {
+    left: 0;
+}
+
+.divider-text::after {
+    right: 0;
+}
+
+.file-upload-wrapper {
+    display: flex;
+    gap: 1rem;
+    align-items: center;
+    margin-bottom: 1rem;
+}
+
+.hidden-input {
+    display: none;
+}
+
+.file-label {
+    flex-grow: 1;
+    background: rgba(15, 23, 42, 0.6);
+    border: 2px dashed var(--glass-border);
+    border-radius: 12px;
+    padding: 0.8rem;
+    cursor: pointer;
+    text-align: center;
+    color: var(--text-muted);
+    transition: all 0.2s;
+}
+
+.file-label:hover {
+    border-color: var(--secondary);
+    color: var(--secondary);
+}
+
+.secondary-btn {
+    background: transparent;
+    border: 1px solid var(--secondary);
+    color: var(--secondary);
+    padding: 0.8rem 1.5rem;
+}
+
+.secondary-btn:hover {
+    background: rgba(6, 182, 212, 0.1);
+}
+
+.secondary-btn:disabled {
+    border-color: var(--text-muted);
+    color: var(--text-muted);
+    cursor: not-allowed;
+}

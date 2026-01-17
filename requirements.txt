@@ -1,0 +1,9 @@
+flask
+python-dotenv
+google-generativeai
+pinecone
+cohere
+tiktoken
+numpy
+pypdf
+gunicorn
